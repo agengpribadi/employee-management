@@ -1,0 +1,251 @@
+<div class="ui-g-12">
+  <div class="card shadow-effect">
+    <div class="ui-g" style="padding-bottom: 0; text-align: left;">
+      <div class="ui-g-6 ui-sm-12 no-padding">
+        <h1>Edit Employee</h1>
+      </div>
+      <div class="ui-g-6 ui-sm-12 no-padding" style="text-align: right">
+        <button pButton class="ui-button-danger" type="button" icon="pi pi-times" label="Cancel"
+          (click)="back()"></button>
+        <button pButton class="ui-button-success" [disabled]="editForm.invalid" style="margin-left: 5px;" type="button"
+          icon="pi pi-save" label="Save" (click)="edit()"></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="ui-g-12">
+  <div class="card card-w-title shadow-effect no-padding">
+
+    <div class="ui-g">
+      <div class="ui-g-12 ui-g-nopad" style="background-color: #eeeeee;border-bottom: 1px solid silver;">
+        <div style="padding:10px 16px 10px 16px">
+          <h3 style="margin: 0;font-weight: 500;color: #0f4d81;">
+            Employee Information
+          </h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="ui-g" style="padding:16px;">
+
+      <form class="ui-g-12 ui-g-nopad" [formGroup]="editForm">
+
+        <div class="ui-g-6 ui-sm-12">
+          <div class="ui-g-12 ui-g-nopad">
+            <div class="ui-g-4 ui-lg-4 ui-md-4">
+              Username
+              <span style="color:red">*</span>
+            </div>
+
+            <div class="ui-g-8 ui-lg-8 ui-md-8 ui-fluid">
+              <input formControlName="username" pInputText type="text" maxlength="50">
+            </div>
+            <div class="ui-g-12 no-padding" *ngIf="dirtyTouched(editForm, 'username')">
+              <div class="ui-g-4 ui-lg-4 ui-md-4"></div>
+              <div class="ui-g-8 ui-lg-8 ui-md-8 ui-fluid no-padding">
+                <p-message *ngIf="editForm.get('username').errors.required" severity="error"
+                  text="Username is required">
+                </p-message>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="ui-g-12 ui-g-nopad">
+            <div class="ui-g-4 ui-lg-4 ui-md-4">
+              Firstname
+              <span style="color:red">*</span>
+            </div>
+
+            <div class="ui-g-8 ui-lg-8 ui-md-8 ui-fluid">
+              <input formControlName="first_name" pInputText type="text">
+            </div>
+
+            <div class="ui-g-12 no-padding" *ngIf="dirtyTouched(editForm, 'first_name')">
+              <div class="ui-g-4 ui-lg-4 ui-md-4"></div>
+              <div class="ui-g-8 ui-lg-8 ui-md-8 ui-fluid no-padding">
+                <p-message *ngIf="editForm.get('first_name').errors.required" severity="error"
+                  text="Firstname is required">
+                </p-message>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="ui-g-12 ui-g-nopad">
+            <div class="ui-g-4 ui-lg-4 ui-md-4">
+              Lastname
+              <span style="color:red">*</span>
+            </div>
+
+            <div class="ui-g-8 ui-lg-8 ui-md-8 ui-fluid">
+              <input formControlName="last_name" pInputText type="text">
+            </div>
+
+            <div class="ui-g-12 no-padding" *ngIf="dirtyTouched(editForm, 'last_name')">
+              <div class="ui-g-4 ui-lg-4 ui-md-4"></div>
+              <div class="ui-g-8 ui-lg-8 ui-md-8 ui-fluid no-padding">
+                <p-message *ngIf="editForm.get('last_name').errors.required" severity="error"
+                  text="Lastname is required">
+                </p-message>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="ui-g-12 ui-g-nopad">
+            <div class="ui-g-4 ui-lg-4 ui-md-4">
+              Email
+              <span style="color:red">*</span>
+            </div>
+
+            <div class="ui-g-8 ui-lg-8 ui-md-8 ui-fluid">
+              <input formControlName="email" pInputText type="text">
+            </div>
+
+            <div class="ui-g-12 no-padding" *ngIf="dirtyTouched(editForm, 'email')">
+              <div class="ui-g-4 ui-lg-4 ui-md-4"></div>
+              <div class="ui-g-8 ui-lg-8 ui-md-8 ui-fluid no-padding">
+                <p-message *ngIf="editForm.get('email').errors.required" severity="error" text="Email is required">
+                </p-message>
+                <p-message *ngIf="editForm.get('email').errors.pattern" severity="error"
+                  text="Format Email does not match">
+                </p-message>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="ui-g-12 ui-g-nopad">
+            <div class="ui-g-4 ui-lg-4 ui-md-4">
+              Gender
+              <span style="color:red">*</span>
+            </div>
+
+            <div class="ui-g-8 ui-lg-8 ui-md-8 ui-fluid">
+              <p-radioButton name="groupname" formControlName="gender" value="Male" label="Male"></p-radioButton>
+              <p-radioButton name="groupname" formControlName="gender" value="Female" label="Female"></p-radioButton>
+            </div>
+
+            <div class="ui-g-12 no-padding" *ngIf="dirtyTouched(editForm, 'gender')">
+              <div class="ui-g-4 ui-lg-4 ui-md-4"></div>
+              <div class="ui-g-8 ui-lg-8 ui-md-8 ui-fluid no-padding">
+                <p-message *ngIf="editForm.get('gender').errors.required" severity="error" text="Gender is required">
+                </p-message>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="ui-g-12 ui-g-nopad">
+            <div class="ui-g-4 ui-lg-4 ui-md-4">
+              Birthdate
+              <span style="color:red">*</span>
+            </div>
+
+            <div class="ui-g-8 ui-lg-8 ui-md-8 ui-fluid">
+              <input pInputText formControlName="birthdate" type="date">
+            </div>
+
+            <div class="ui-g-12 no-padding" *ngIf="dirtyTouched(editForm, 'birthdate')">
+              <div class="ui-g-4 ui-lg-4 ui-md-4"></div>
+              <div class="ui-g-8 ui-lg-8 ui-md-8 ui-fluid no-padding">
+                <p-message *ngIf="editForm.get('birthdate').errors.required" severity="error"
+                  text="Birthdate is required">
+                </p-message>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="ui-g-12 ui-g-nopad">
+            <div class="ui-g-4 ui-lg-4 ui-md-4">
+              Basic Salary
+              <span style="color:red">*</span>
+            </div>
+
+            <div class="ui-g-8 ui-lg-8 ui-md-8 ui-fluid">
+              <input formControlName="basicSalary" pInputText currencyMask
+                [options]="{align: 'left', prefix: 'Rp', thousands: '.', decimal: ',', precision: 2, allowNegative: false, nullable:false}">
+            </div>
+
+            <div class="ui-g-12 no-padding" *ngIf="dirtyTouched(editForm, 'basicSalary')">
+              <div class="ui-g-4 ui-lg-4 ui-md-4"></div>
+              <div class="ui-g-8 ui-lg-8 ui-md-8 ui-fluid no-padding">
+                <p-message *ngIf="editForm.get('basicSalary').errors.required" severity="error"
+                  text="Basic Salary is required">
+                </p-message>
+                <p-message *ngIf="editForm.get('basicSalary').errors.pattern" severity="error"
+                  text="Basic Salary must be a number">
+                </p-message>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="ui-g-12 ui-g-nopad">
+            <div class="ui-g-4 ui-lg-4 ui-md-4">
+              Status
+              <span style="color:red">*</span>
+            </div>
+            <div class="ui-g-8 ui-lg-8 ui-md-8 ui-fluid">
+              <ui-switch [(ngModel)]="status" [ngModelOptions]="{standalone: true}"></ui-switch>
+            </div>
+
+            <div class="ui-g-12 no-padding" *ngIf="dirtyTouched(editForm, 'status')">
+              <div class="ui-g-4 ui-lg-4 ui-md-4"></div>
+              <div class="ui-g-8 ui-lg-8 ui-md-8 ui-fluid no-padding">
+                <p-message *ngIf="editForm.get('status').errors.required" severity="error" text="Status is required">
+                </p-message>
+              </div>
+            </div>
+
+          </div>
+
+
+          <div class="ui-g-12 ui-g-nopad">
+            <div class="ui-g-4 ui-lg-4 ui-md-4">
+              Group
+              <span style="color:red">*</span>
+            </div>
+            <div class="ui-g-8 ui-lg-8 ui-md-8 ui-fluid">
+              <p-dropdown [options]="grouping" formControlName="group" placeholder="Select Group">
+              </p-dropdown>
+            </div>
+            <div class="ui-g-12 no-padding" *ngIf="dirtyTouched(editForm, 'group')">
+              <div class="ui-g-4 ui-lg-4 ui-md-4"></div>
+              <div class="ui-g-8 ui-lg-8 ui-md-8 ui-fluid no-padding">
+                <p-message *ngIf="editForm.get('group').errors.required" severity="error" text="Group is required">
+                </p-message>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="ui-g-12 ui-g-nopad">
+            <div class="ui-g-4 ui-lg-4 ui-md-4">
+              Description
+              <span style="color:red">*</span>
+            </div>
+
+            <div class="ui-g-8 ui-lg-8 ui-md-8 ui-fluid">
+              <input formControlName="description" pInputText type="text">
+            </div>
+            <div class="ui-g-12 no-padding" *ngIf="dirtyTouched(editForm, 'description')">
+              <div class="ui-g-4 ui-lg-4 ui-md-4"></div>
+              <div class="ui-g-8 ui-lg-8 ui-md-8 ui-fluid no-padding">
+                <p-message *ngIf="editForm.get('description').errors.required" severity="error"
+                  text="Description is required">
+                </p-message>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+        <div class="ui-g-6 ui-sm-12"></div>
+      </form>
+    </div>
+  </div>
+</div>

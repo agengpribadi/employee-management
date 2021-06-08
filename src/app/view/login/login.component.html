@@ -1,0 +1,51 @@
+<messages></messages>
+<div class="ui-g-12 ui-g-nopad" style="height: 100%;">
+  <div class="ui-g-6 ui-md-6 ui-sm-12 wallpaper-image" style="height: 100%;"></div>
+  <div class="ui-g-6 ui-md-6 ui-sm-12 center-content" style="height: 100%;">
+    <div class="card modal-content shadow-effect" [formGroup]="loginForm">
+      <div class="ui-g-12">
+        <div class="ui-g-12">
+          <h1 style="margin-bottom: 0;">Welcome</h1>
+          <span style="font-size: 14px;color: #0f4d81;">Sign In To System</span>
+        </div>
+      </div>
+      <div class="ui-g-12">
+        <div class="ui-g-12">
+          <div>Username<span style="color: red;">*</span></div>
+        </div>
+        <div class="ui-g-12 ui-fluid">
+          <input placeholder="username" (keyup.enter)="!loginForm.valid ? '' : login()" formControlName="username"
+            pInputText type="text">
+        </div>
+        <div class="ui-g-12" *ngIf="dirtyTouched(loginForm, 'username')">
+          <p-message *ngIf="loginForm.get('username').errors.required" severity="error" text="Username is required.">
+          </p-message>
+          <p-message *ngIf="loginForm.get('username').errors.minlength" severity="error"
+            text="Username Min 8 character.">
+          </p-message>
+        </div>
+      </div>
+      <div class="ui-g-12">
+        <div class="ui-g-12">
+          <div>Password<span style="color: red;">*</span></div>
+        </div>
+        <div class="ui-g-12 ui-fluid">
+          <input id="password" (keyup.enter)="!loginForm.valid ? '' : login()" placeholder="********" pInputText
+            formControlName="password" type="password">
+        </div>
+        <div class="ui-g-12" *ngIf="dirtyTouched(loginForm, 'password')">
+          <p-message *ngIf="loginForm.get('password').errors.required" severity="error" text="Password is required.">
+          </p-message>
+        </div>
+        <div class="ui-g-12" style="align-items: center;display: flex;">
+          <input type="checkbox" style="cursor: pointer;" (click)="change()">Show Password
+        </div>
+      </div>
+      <div class="ui-g-12">
+        <div class="ui-g-12 ui-fluid">
+          <button pButton label="Sign in" [disabled]="!loginForm.valid" (click)="login()"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

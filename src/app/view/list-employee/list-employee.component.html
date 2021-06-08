@@ -1,0 +1,75 @@
+<messages></messages>
+<div class="ui-g-12">
+  <div class="card shadow-effect">
+    <div class="ui-g" style="padding-bottom: 0;">
+      <div class="ui-g-6 no-padding">
+        <h1>List Employee</h1>
+      </div>
+      <div class="ui-g-6 no-padding" style="text-align: right">
+        <button pButton class="ui-button-danger" type="button" icon="pi pi-power-off" label="Logout"
+          (click)="logout()"></button>
+      </div>
+    </div>
+
+    <div style="padding-left: 0; margin-bottom: 16px;">
+      <div class="ui-inputgroup">
+        <button pButton type="button" class="ui-button-primary" icon="pi pi-plus" label="Add Employee"
+          (click)="register()"></button>
+        <input style="width: 50%;" placeholder="Search Employee's Name or Email" pInputText type="search"
+          [(ngModel)]="search" (input)="dt.filterGlobal(search, 'contains')">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="ui-g-12">
+  <div class="card card-w-title shadow-effect no-padding">
+    <div class="ui-g">
+      <div class="ui-g" style="padding:16px;">
+        <p-table [responsive]="true" #dt [style]="{width:'100%'}" [value]='listForm' selectionMode="single"
+          [paginator]="true" [rows]="10" [pageLinks]="3" [rowsPerPageOptions]="pagePerOptions"
+          [globalFilterFields]="searchFilterColumn">
+          <ng-template let-rowData let-rowIndex="rowIndex" pTemplate="header">
+            <tr style="text-align: center">
+              <th style="width: 10%">No</th>
+              <th *ngFor="let col of cols" [pSortableColumn]="col['field']" [ngStyle]="{'width': col['width']}">
+                {{col['header']}}
+                <p-sortIcon [field]="col['field']" ariaLabel="Activate to sort"
+                  ariaLabelDesc="Activate to sort in descending order"
+                  ariaLabelAsc="Activate to sort in ascending order">
+                </p-sortIcon>
+              </th>
+              <th style="width: 10%">Action</th>
+            </tr>
+          </ng-template>
+          <ng-template let-rowData let-rowIndex="rowIndex" pTemplate="body">
+            <tr style="text-align: center" [pSelectableRow]="rowData">
+              <td>
+                {{rowIndex + 1}}
+              </td>
+              <td>
+                {{rowData['username'] }}
+              </td>
+              <td>
+                {{rowData['email']}}
+              </td>
+              <td>
+                {{rowData['gender']}}
+              </td>
+              <td>
+                {{rowData['group']}}
+              </td>
+              <td>
+                <button pButton class="ui-button-success" type="button" icon="pi pi-external-link"
+                  (click)="detail(rowData)"></button>
+                <button pButton class="ui-button-danger" (click)="delete(rowData.id,rowData)" style="margin-left: 5px;"
+                  type="button" icon="pi pi-trash"></button>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    </div>
+  </div>
+</div>
+<p-confirmDialog [style]="{width: '50vw'}"></p-confirmDialog>

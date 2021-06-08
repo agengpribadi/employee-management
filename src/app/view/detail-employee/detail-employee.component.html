@@ -1,0 +1,162 @@
+<div class="ui-g-12">
+  <div class="card shadow-effect">
+    <div class="ui-g" style="padding-bottom: 0; text-align: left;">
+      <div class="ui-g-6 ui-sm-12 no-padding">
+        <h1>Detail Employee</h1>
+      </div>
+      <div class="ui-g-6 ui-sm-12 no-padding" style="text-align: right">
+        <button pButton class="ui-button-danger" type="button" icon="pi pi-times" label="Cancel"
+          (click)="back()"></button>
+        <button pButton class="ui-button-info" style="margin-left: 5px;" type="button" icon="pi pi-pencil" label="Edit"
+          (click)="edit()"></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="ui-g-12">
+  <div class="card card-w-title shadow-effect no-padding">
+
+    <div class="ui-g">
+      <div class="ui-g-12 ui-g-nopad" style="background-color: #eeeeee;border-bottom: 1px solid silver;">
+        <div style="padding:10px 16px 10px 16px">
+          <h3 style="margin: 0;font-weight: 500;color: #0f4d81;">
+            Employee Information
+          </h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="ui-g" style="padding:16px;">
+
+      <form class="ui-g-12 ui-g-nopad" [formGroup]="detailForm">
+
+        <div class="ui-g-6 ui-sm-12">
+          <div class="ui-g-12 ui-g-nopad">
+            <div class="ui-g-4 ui-lg-4 ui-md-4">
+              Username
+              <span style="color:red">*</span>
+            </div>
+
+            <div class="ui-g-8 ui-lg-8 ui-md-8 ui-fluid">
+              <input formControlName="username" pInputText type="text" maxlength="50">
+            </div>
+
+          </div>
+
+          <div class="ui-g-12 ui-g-nopad">
+            <div class="ui-g-4 ui-lg-4 ui-md-4">
+              Firstname
+              <span style="color:red">*</span>
+            </div>
+
+            <div class="ui-g-8 ui-lg-8 ui-md-8 ui-fluid">
+              <input formControlName="first_name" pInputText type="text">
+            </div>
+
+          </div>
+
+          <div class="ui-g-12 ui-g-nopad">
+            <div class="ui-g-4 ui-lg-4 ui-md-4">
+              Lastname
+              <span style="color:red">*</span>
+            </div>
+
+            <div class="ui-g-8 ui-lg-8 ui-md-8 ui-fluid">
+              <input formControlName="last_name" pInputText type="text">
+            </div>
+
+          </div>
+
+          <div class="ui-g-12 ui-g-nopad">
+            <div class="ui-g-4 ui-lg-4 ui-md-4">
+              Email
+              <span style="color:red">*</span>
+            </div>
+
+            <div class="ui-g-8 ui-lg-8 ui-md-8 ui-fluid">
+              <input formControlName="email" pInputText type="text">
+            </div>
+
+          </div>
+
+          <div class="ui-g-12 ui-g-nopad">
+            <div class="ui-g-4 ui-lg-4 ui-md-4">
+              Gender
+              <span style="color:red">*</span>
+            </div>
+
+            <div class="ui-g-8 ui-lg-8 ui-md-8 ui-fluid">
+              <p-radioButton name="groupname" formControlName="gender" value="Male" label="Male"></p-radioButton>
+              <p-radioButton name="groupname" formControlName="gender" value="Female" label="Female"></p-radioButton>
+            </div>
+
+          </div>
+
+          <div class="ui-g-12 ui-g-nopad">
+            <div class="ui-g-4 ui-lg-4 ui-md-4">
+              Birthdate
+              <span style="color:red">*</span>
+            </div>
+
+            <div class="ui-g-8 ui-lg-8 ui-md-8 ui-fluid">
+              <input pInputText formControlName="birthdate" type="date">
+            </div>
+
+          </div>
+
+          <div class="ui-g-12 ui-g-nopad">
+            <div class="ui-g-4 ui-lg-4 ui-md-4">
+              Basic Salary
+              <span style="color:red">*</span>
+            </div>
+
+            <div class="ui-g-8 ui-lg-8 ui-md-8 ui-fluid">
+              <input formControlName="basicSalary" pInputText currencyMask
+                [options]="{align: 'left', prefix: 'Rp', thousands: '.', decimal: ',', precision: 2, allowNegative: false, nullable:false}">
+            </div>
+
+          </div>
+
+          <div class="ui-g-12 ui-g-nopad">
+            <div class="ui-g-4 ui-lg-4 ui-md-4">
+              Status
+              <span style="color:red">*</span>
+            </div>
+            <div class="ui-g-8 ui-lg-8 ui-md-8 ui-fluid">
+              <ui-switch [(ngModel)]="status" [ngModelOptions]="{standalone: true}"></ui-switch>
+            </div>
+
+          </div>
+
+
+          <div class="ui-g-12 ui-g-nopad">
+            <div class="ui-g-4 ui-lg-4 ui-md-4">
+              Group
+              <span style="color:red">*</span>
+            </div>
+            <div class="ui-g-8 ui-lg-8 ui-md-8 ui-fluid">
+              <p-dropdown [options]="grouping" formControlName="group" placeholder="Select Group">
+              </p-dropdown>
+            </div>
+
+          </div>
+
+          <div class="ui-g-12 ui-g-nopad">
+            <div class="ui-g-4 ui-lg-4 ui-md-4">
+              Description
+              <span style="color:red">*</span>
+            </div>
+
+            <div class="ui-g-8 ui-lg-8 ui-md-8 ui-fluid">
+              <input formControlName="description" pInputText type="text">
+            </div>
+
+          </div>
+
+        </div>
+        <div class="ui-g-6 ui-sm-12"></div>
+      </form>
+    </div>
+  </div>
+</div>
