@@ -28,14 +28,14 @@ export class AddEmployeeComponent implements OnInit {
 
     this.addForm = this.fb.group({
       username: new FormControl('', Validators.required),
-      firstname: new FormControl('', Validators.required),
-      lastname: new FormControl('', Validators.required),
+      first_name: new FormControl('', Validators.required),
+      last_name: new FormControl('', Validators.required),
       status: new FormControl(false, Validators.required),
       birthdate: new FormControl('', Validators.required),
       email: new FormControl('', Validators.compose([Validators.required, Validators.pattern(emailRegex)])),
       gender: new FormControl('', Validators.required),
       group: new FormControl('', Validators.required),
-      basicsalary: new FormControl(0, Validators.compose([Validators.required, Validators.pattern(intRegex)])),
+      basicSalary: new FormControl(0, Validators.compose([Validators.required, Validators.pattern(intRegex)])),
       description: new FormControl('', Validators.required),
     })
   }
@@ -50,20 +50,8 @@ export class AddEmployeeComponent implements OnInit {
 
   save() {
     let employeeList = JSON.parse(localStorage.getItem('dataDummy'));
-    const body = {
-      id: this.dataLength.length + 1,
-      username: this.addForm.value.username,
-      first_name: this.addForm.value.firstname,
-      last_name: this.addForm.value.lastname,
-      birthdate: this.addForm.value.birthdate,
-      email: this.addForm.value.email,
-      gender: this.addForm.value.gender,
-      group: this.addForm.value.group,
-      basicSalary: this.addForm.value.basicsalary,
-      description: this.addForm.value.description,
-      status: this.addForm.value.status,
-    }
-    employeeList.push(body);
+    this.addForm.addControl('id', new FormControl(this.dataLength.length+1, Validators.required));
+    employeeList.push(this.addForm.value);
     localStorage.setItem('dataDummy', JSON.stringify(employeeList));
     this.message.setMessage('success', 'Data Successfuly Added!', 'Success');
     this.router.navigateByUrl('/list-employee');

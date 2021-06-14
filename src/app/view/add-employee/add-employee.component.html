@@ -58,13 +58,13 @@
             </div>
 
             <div class="ui-g-8 ui-lg-8 ui-md-8 ui-fluid">
-              <input formControlName="firstname" pInputText type="text">
+              <input formControlName="first_name" pInputText type="text">
             </div>
 
-            <div class="ui-g-12 no-padding" *ngIf="dirtyTouched(addForm, 'firstname')">
+            <div class="ui-g-12 no-padding" *ngIf="dirtyTouched(addForm, 'first_name')">
               <div class="ui-g-4 ui-lg-4 ui-md-4"></div>
               <div class="ui-g-8 ui-lg-8 ui-md-8 ui-fluid no-padding">
-                <p-message *ngIf="addForm.get('firstname').errors.required" severity="error"
+                <p-message *ngIf="addForm.get('first_name').errors.required" severity="error"
                   text="Firstname is required">
                 </p-message>
               </div>
@@ -78,13 +78,13 @@
             </div>
 
             <div class="ui-g-8 ui-lg-8 ui-md-8 ui-fluid">
-              <input formControlName="lastname" pInputText type="text">
+              <input formControlName="last_name" pInputText type="text">
             </div>
 
-            <div class="ui-g-12 no-padding" *ngIf="dirtyTouched(addForm, 'lastname')">
+            <div class="ui-g-12 no-padding" *ngIf="dirtyTouched(addForm, 'last_name')">
               <div class="ui-g-4 ui-lg-4 ui-md-4"></div>
               <div class="ui-g-8 ui-lg-8 ui-md-8 ui-fluid no-padding">
-                <p-message *ngIf="addForm.get('lastname').errors.required" severity="error" text="Lastname is required">
+                <p-message *ngIf="addForm.get('last_name').errors.required" severity="error" text="Lastname is required">
                 </p-message>
               </div>
             </div>
@@ -160,17 +160,17 @@
             </div>
 
             <div class="ui-g-8 ui-lg-8 ui-md-8 ui-fluid">
-              <input formControlName="basicsalary" pInputText currencyMask
+              <input formControlName="basicSalary" pInputText currencyMask
                 [options]="{align: 'left', prefix: 'Rp', thousands: '.', decimal: ',', precision: 2, allowNegative: false, nullable:false}">
             </div>
 
-            <div class="ui-g-12 no-padding" *ngIf="dirtyTouched(addForm, 'basicsalary')">
+            <div class="ui-g-12 no-padding" *ngIf="dirtyTouched(addForm, 'basicSalary')">
               <div class="ui-g-4 ui-lg-4 ui-md-4"></div>
               <div class="ui-g-8 ui-lg-8 ui-md-8 ui-fluid no-padding">
-                <p-message *ngIf="addForm.get('basicsalary').errors.required" severity="error"
+                <p-message *ngIf="addForm.get('basicSalary').errors.required" severity="error"
                   text="Basic Salary is required">
                 </p-message>
-                <p-message *ngIf="addForm.get('basicsalary').errors.pattern" severity="error"
+                <p-message *ngIf="addForm.get('basicSalary').errors.pattern" severity="error"
                   text="Basic Salary must be a number">
                 </p-message>
               </div>
